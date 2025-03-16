@@ -26,30 +26,30 @@ SAUDI_CITIES = {
     "Taif": {"lat": 21.2871, "lon": 40.4158}
 }
 
-# Dictionary of city images with width parameter already added
+# Dictionary of city images with open source URLs
 CITY_IMAGES = {
-    "Riyadh": "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=800",
-    "Jeddah": "https://images.unsplash.com/photo-1622147077407-afe05d9a6ffc?w=800",
-    "Mecca": "https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?w=800",
-    "Medina": "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800",
-    "Dammam": "https://images.unsplash.com/photo-1578895101408-1a6b23e12d16?w=800",
-    "Tabuk": "https://images.unsplash.com/photo-1516339626902-7dee9238d83a?w=800",
-    "Abha": "https://images.unsplash.com/photo-1543853258-304b02c31a8a?w=800",
-    "Al Khobar": "https://images.unsplash.com/photo-1568866381492-ea4a6db0f501?w=800",
-    "Khamis Mushait": "https://images.unsplash.com/photo-1561531061-0cb23b0c8ab3?w=800",
-    "Taif": "https://images.unsplash.com/photo-1547558918-7ae92c6466ef?w=800",
-    "default": "https://images.unsplash.com/photo-1517429128955-67059d52def3?w=800"
+    "Riyadh": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Riyadh_collage.png",
+    "Jeddah": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Jeddah_cityscape.jpg",
+    "Mecca": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Clock_Tower_Makkah.jpg",
+    "Medina": "https://upload.wikimedia.org/wikipedia/commons/5/57/Al-Masjid_An-Nabawi.jpg",
+    "Dammam": "https://upload.wikimedia.org/wikipedia/commons/2/24/Dammam_Corniche.jpg",
+    "Tabuk": "https://upload.wikimedia.org/wikipedia/commons/2/25/Tabuk_city.jpg",
+    "Abha": "https://upload.wikimedia.org/wikipedia/commons/5/58/Abha_city.jpg",
+    "Al Khobar": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Al_Khobar_Corniche.jpg",
+    "Khamis Mushait": "https://upload.wikimedia.org/wikipedia/commons/4/49/Khamis_Mushait.jpg",
+    "Taif": "https://upload.wikimedia.org/wikipedia/commons/8/85/Taif_city.jpg",
+    "default": "https://upload.wikimedia.org/wikipedia/commons/4/48/Saudi_Arabia_location_map.svg"
 }
 
-# Eco-friendly transport images with width parameter
+# Eco-friendly transport images with open source URLs
 ECO_TRANSPORT_IMAGES = [
-    "https://images.unsplash.com/photo-1519664824562-b4bc73f9795a?w=800",  # Walking
-    "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800",  # Cycling
-    "https://images.unsplash.com/photo-1556122071-a221fac50430?w=800",  # Public Transport
-    "https://images.unsplash.com/photo-1617886322168-72b886574cf7?w=800",  # EV
-    "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800",  # Modern tram
-    "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800",  # Bicycles
-    "https://images.unsplash.com/photo-1529946179074-87642f6204d7?w=800"   # Electric bus
+    "https://upload.wikimedia.org/wikipedia/commons/7/7f/Bicycle_in_London.jpg",  # Walking
+    "https://upload.wikimedia.org/wikipedia/commons/6/69/Riyadh_Metro_train.jpg",  # Saudi Metro
+    "https://upload.wikimedia.org/wikipedia/commons/3/36/Public_Transport_in_London.jpg",  # Public Transport
+    "https://upload.wikimedia.org/wikipedia/commons/4/45/Electric_Vehicle_Charging.jpg",  # EV
+    "https://upload.wikimedia.org/wikipedia/commons/5/55/Modern_Tram.jpg",  # Modern tram
+    "https://upload.wikimedia.org/wikipedia/commons/9/9b/Bicycles_in_Rack.jpg",  # Bicycles
+    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Electric_Bus.jpg"   # Electric bus
 ]
 
 # CSS styles
@@ -108,6 +108,10 @@ div.stButton > button {
 
 div.stButton > button:hover {
     background-color: #006B48;
+}
+
+.suggestion-card h3 {
+    color: #006B48;  # Darker green for better readability
 }
 """
 
@@ -378,7 +382,7 @@ try:
             display_transport_image()
 
             for suggestion in suggestions:
-                st.markdown(f"<div class='suggestion-card'>{suggestion}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='suggestion-card'><h3>{suggestion}</h3></div>", unsafe_allow_html=True)
 
         # Rewards section
         st.markdown("### 🏆 Your Eco Rewards")
@@ -406,6 +410,14 @@ try:
                 f"<div class='reward-card'>{action['action']}: +{action['points']} points ({action['timestamp']})</div>",
                 unsafe_allow_html=True
             )
+
+        # Rewards list
+        st.markdown("### Rewards")
+        st.markdown("""
+        - Free metro tickets
+        - Rent a bike discount
+        - Grocery discounts at local markets
+        """)
 
 except Exception as e:
     st.error(f"Error fetching air quality data: {str(e)}")
