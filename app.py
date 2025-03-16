@@ -57,22 +57,30 @@ css = """
 .stApp {
     max-width: 1200px;
     margin: 0 auto;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
 }
 
 .main-header {
     color: #00875A;
     text-align: center;
     margin-bottom: 2rem;
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
-.gold-text {
-    color: #DAA520;
+.subtitle {
+    color: #666;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5em;
 }
 
 .city-select {
     background-color: #F0F2F6;
     padding: 1rem;
     border-radius: 10px;
+    margin-bottom: 2rem;
 }
 
 .metrics-container {
@@ -80,6 +88,7 @@ css = """
     padding: 1.5rem;
     border-radius: 10px;
     border: 1px solid #E9ECEF;
+    margin-bottom: 2rem;
 }
 
 .reward-card {
@@ -104,10 +113,15 @@ div.stButton > button {
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    font-size: 1.1em;
 }
 
 div.stButton > button:hover {
     background-color: #006B48;
+}
+
+h3 {
+    color: #006B48;
 }
 
 .suggestion-card h3 {
@@ -135,8 +149,8 @@ def find_nearest_city(lat, lon):
         lon2_rad = math.radians(lon2)
 
         # Difference in coordinates
-        dlon = lon2_rad - lon1_rad
-        dlat = lat2_rad - lat1_rad
+        dlon = lon2_rad - lon1_lon
+        dlat = lat2_rad - lat1_lat
 
         # Haversine formula
         a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2
@@ -286,7 +300,7 @@ rewards = RewardsSystem()
 
 # Main App
 st.markdown("<h1 class='main-header'>🌱 Air Aware</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center; color: #666;'>Saudi Air Quality Monitor</h2>", unsafe_allow_html=True)
+st.markdown("<h2 class='subtitle'>Saudi Air Quality Monitor</h2>", unsafe_allow_html=True)
 
 # City selection
 col1, col2 = st.columns([2, 1])
