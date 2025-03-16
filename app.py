@@ -174,7 +174,7 @@ def get_air_quality(lat, lon):
     """
     Get air quality data for the given coordinates using OpenWeather API
     """
-    api_key = "YOUR_API_KEY"  # Replace with your OpenWeather API key
+    api_key = "769ef70d6cdc1edfd61ae12ccf9e929b"  # Replace with your OpenWeather API key
     url = f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={api_key}"
     
     try:
